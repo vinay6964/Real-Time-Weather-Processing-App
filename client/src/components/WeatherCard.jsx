@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+// import { toast, ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 // Set the app root for accessibility
 Modal.setAppElement('#root');
 
-const WeatherCard = ({ data }) => {
+const WeatherCard = ({ data, threshold = 35 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Function to open the modal
@@ -12,6 +14,18 @@ const WeatherCard = ({ data }) => {
 
   // Function to close the modal
   const closeModal = () => setIsModalOpen(false);
+
+  // Check temperature threshold and show toast warning if exceeded
+  // useEffect(() => {
+  //   if (data.temp > threshold) {
+  //     toast.warning(`${data.city} temperature is above ${threshold}°C!`, {
+  //       // position: toast.POSITION.TOP_RIGHT,
+  //       autoClose: 5000, // The toast will disappear after 5 seconds
+  //       className: 'bg-yellow-500 text-white', // Custom toast styling
+  //       progressClassName: 'bg-yellow-600',
+  //     });
+  //   }
+  // }, [data.temp, data.city, threshold]);
 
   return (
     <>
@@ -81,6 +95,9 @@ const WeatherCard = ({ data }) => {
           </div>
         </div>
       </Modal>
+
+      {/* Toast Container */}
+      {/* <ToastContainer /> */}
     </>
   );
 };

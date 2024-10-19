@@ -1,12 +1,11 @@
-// src/components/SearchBar.js
 import React, { useState } from 'react';
 
 const SearchBar = () => {
   const [city, setCity] = useState('');
 
-  const handleSearch = () => {
-    // Add logic to fetch weather data based on city name
-    alert(`Searching for weather in: ${city}`);
+  const handleSearch = (e) => {
+     e.preventDefault();
+     
   };
 
   return (
@@ -19,7 +18,9 @@ const SearchBar = () => {
         className="px-4 py-2 border rounded-lg focus:outline-none focus:ring text-black"
       />
       <button
-        onClick={handleSearch}
+        onClick={(e) => {
+         handleSearch(e)
+        }}
         className="ml-2 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500"
       >
         Search
